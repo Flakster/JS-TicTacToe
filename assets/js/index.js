@@ -2,7 +2,7 @@ const gameBoard = () => {
 
     let board = ['', '', '', '', '', '', '', '', ''];
     let slots = document.getElementsByClassName('slot')
-        //Verify use of this function
+        //Verify use of this function ---> OPTIONAL.
     const displayArray = () => {
             for (let i = 0; i < board.length; i += 1) {
                 slots[i].innerHTML = board[i]
@@ -30,6 +30,7 @@ const gameBoard = () => {
 };
 
 const player = (name, val) => {
+    // Here is is to check the game logic
     const checkWin = (board) => {
         return true
 
@@ -44,12 +45,14 @@ const player = (name, val) => {
 const response = (index, player, board, slots, header, status) => {
     let response = board.modifyArray(index, player.val)
     if (response) {
+
         header.innerHTML = `${player.name} turn`
         slots[index].innerHTML = player.val
         return !status
     } else {
-        return status
         alert("Please choose another position")
+        return status
+
     }
 
 }
