@@ -136,12 +136,16 @@ const response = (index, player, board, slots, header, status) => {
 
 }
 
-const init = () => {
-
+const init = (name1, name2) => {
+    let containers = document.getElementsByClassName("container")
+    console.log(containers)
+    containers[1].classList.add('d-none')
+    containers[0].classList.remove('d-none') 
     let header = document.getElementsByTagName('h5')[0]
+    header.classList.remove('d-none')
     let board = gameBoard()
-    let player1 = player('Player 1', 'X')
-    let player2 = player('Player2', 'O')
+    let player1 = player(name1, 'X')
+    let player2 = player(name2, 'O')
         // let result = true
     let player1turn = true
 
@@ -181,6 +185,8 @@ const init = () => {
 }
 
 
-
-
-init()
+const startBtn = document.getElementById("startBtn")
+startBtn.addEventListener('click', function(){
+  let inputs = document.getElementsByTagName("input")
+  init(inputs[0].value, inputs[1].value)
+});
