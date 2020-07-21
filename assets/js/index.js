@@ -2,15 +2,14 @@ const gameBoard = () => {
 
     let board = ['', '', '', '', '', '', '', '', ''];
     let slots = document.getElementsByClassName('slot')
-    let index;
-
+        //Verify use of this function
     const displayArray = () => {
-        for (let i = 0; i < board.length; i += 1) {
-            slots[i].innerHTML = board[i]
+            for (let i = 0; i < board.length; i += 1) {
+                slots[i].innerHTML = board[i]
+            }
+
         }
-
-    }
-
+        //Work on this function
     const modifyArray = (i, val) => {
         if (board[i].length === 0 && val.length !== 0) {
             board[i] = val
@@ -22,18 +21,8 @@ const gameBoard = () => {
     }
 
 
-
-    for (let i = 0; i < board.length; i += 1) {
-        // ModifyArray?
-        slots[i].addEventListener('click', function() {
-            index = i;
-        })
-
-    }
-
-
     return {
-        index,
+        slots,
         displayArray,
         modifyArray,
         board,
@@ -52,29 +41,40 @@ const player = (name, val) => {
     }
 }
 
+const response = (index, player, board, slots, header, status) => {
+    let response = board.modifyArray(index, player.val)
+    if (response) {
+        header.innerHTML = `${player.name} turn`
+        slots[index].innerHTML = player.val
+        return !status
+    } else {
+        return status
+        alert("Please choose another position")
+    }
+
+}
+
 const init = () => {
     let header = document.getElementsByTagName('h5')[0]
     let board = gameBoard()
     let player1 = player('Player 1', 'X')
     let player2 = player('Player2', 'O')
-    let result = true
+        // let result = true
     let player1turn = true
 
+    for (let i = 0; i < board.slots.length; i++) {
+        board.slots[i].addEventListener('click', function() {
+            if (player1turn) {
+                player1turn = response(i, player1, board, board.slots, header, player1turn)
 
-    if (player1turn) {
-        header.innerHTML = 'Player 1 turn'
-        let res = board.modifyArray(board.index, player1.val)
-        if (res) {
-            board.displayArray()
-            player1 = false
-        } else {
-            alert('Please choose another position.')
-        }
-    } else {
-        header.innerHTML = 'Player 2 turn'
-        let res = board.modifyArray(board.index, player2.val)
-
+            } else {
+                player1turn = response(i, player2, board, board.slots, header, player1turn)
+            }
+        })
     }
 }
+
+
+
 
 init()
