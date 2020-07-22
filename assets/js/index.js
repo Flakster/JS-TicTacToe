@@ -25,7 +25,9 @@ const response = (index, player, board, slots, status) => {
 
 const init = (name1, name2) => {
   const containers = document.getElementsByClassName('container');
+  const screen = document.getElementsByClassName('container-fluid')[0];
   containers[1].classList.add('d-none');
+  screen.classList.add('d-none');
   containers[1].classList.remove('d-flex');
   containers[0].classList.remove('d-none');
   const header = document.getElementsByTagName('h5')[0];
