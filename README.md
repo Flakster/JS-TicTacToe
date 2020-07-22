@@ -40,3 +40,9 @@ This project is [MIT](https://github.com/Flakster/JS-TicTacToe/blob/master/LICEN
 * Twitter: [@ferm494](https://twitter.com/ferm494)
 * Github: [@Ferm0494](https://github.com/Ferm0494)
 * Linkedin: [@Ferm0494](https://www.linkedin.com/in/ferm0494/)
+
+👤 Carlos Santamaría
+
+* Twitter: [@Flakster](https://twitter.com/Flakster )
+* Github: [@Flakster](https://github.com/Flakster)
+* Email: contact@carlossantamaria.co
