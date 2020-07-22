@@ -1,0 +1,22 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "A tictactoe based game on JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flakster/JS-TicTactoe.git"
+  },
+  "author": "Ferm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flakster/JS-TicTactoe/issues"
+  },
+  "homepage": "https://github.com/Flakster/JS-TicTactoe#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
