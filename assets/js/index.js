@@ -38,9 +38,8 @@ const init = (name1, name2) => {
   const player2 = player(name2, 'O');
   // let result = true
   let player1turn = true;
-
-  for (let i = 0; i < board.slots.length; i += 1) {
-    board.slots[i].addEventListener('click', () => {
+  Array.from(board.slots).forEach((slot, i) => {
+    slot.addEventListener('click', () => {
       if (player1turn) {
         const {
           status,
@@ -65,7 +64,7 @@ const init = (name1, name2) => {
         player.checkWin(board, header);
       }
     });
-  }
+  });
 };
 
 
