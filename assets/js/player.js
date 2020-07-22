@@ -3,21 +3,20 @@ const player = (name, val) => {
   // Here is is to check the game logic
 
   const renderPop = (slots, message, header) => {
-    //const board = document.getElementsByClassName('container')[0];
-    //board.classList.add('d-none');
-    let mainTitle = document.getElementsByClassName('h1')[0]
-    mainTitle.classList.add('d-none')
+    // const board = document.getElementsByClassName('container')[0];
+    // board.classList.add('d-none');
+    const mainTitle = document.getElementsByTagName('h1')[0];
+    mainTitle.style.color = '#ffff';
     header.classList.add('d-none');
-    const pop = document.getElementsByClassName('rounded')[0];
-    pop.classList.add('d-block');
-    const screen = document.getElementsByClassName('container-fluid')[0];
-    screen.classList.remove('d-none');
+    const pop = document.getElementsByClassName('position-absolute')[0];
+    pop.classList.remove('d-none');
     document.body.style.background = '#f6f6f6';
     const { children } = pop;
-    const popUp = children[0];
+
+    const popUp = children[0].children[0];
 
     popUp.innerHTML = message;
-    children[1].addEventListener('click', () => {
+    children[0].children[1].addEventListener('click', () => {
       window.location.reload();
     });
   };
