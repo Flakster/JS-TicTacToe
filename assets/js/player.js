@@ -48,7 +48,6 @@ export const player = (name, val) => {
             return x !== ''
         })
         if(positions.length === 9){
-            console.log('Game drawed!');
             let message = "Game drawed!"
             renderPop(slots,message,header)
         } 
@@ -65,9 +64,8 @@ export const player = (name, val) => {
     }
 
     const renderPop=(slots,message,header)=>{
-        for (let i = 0; i < slots.length; i += 1) {
-            slots[i].classList.add('d-none')
-        }
+        let board = document.getElementsByClassName('container')[0]
+        board.classList.add('d-none')
         header.classList.add('d-none')
         let pop = document.getElementsByClassName('rounded')[0]
         pop.classList.add('d-block')

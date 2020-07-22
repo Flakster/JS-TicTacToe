@@ -20,7 +20,6 @@ const response = (index, player, board, slots,status) => {
 
 const init = (name1, name2) => {
     let containers = document.getElementsByClassName("container")
-    console.log(containers)
     containers[1].classList.add('d-none')
     containers[1].classList.remove('d-flex')
     containers[0].classList.remove('d-none') 

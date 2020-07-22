@@ -15,7 +15,6 @@ export const gameBoard = () => {
             board[i] = val
             return true
         } else {
-            console.log('The position is already taken.')
             return false
         }
     }
