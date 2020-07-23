@@ -3,7 +3,7 @@
 
 import player from './player.js';
 import gameBoard from './gameBoard.js';
-import DOM from './objectsDOM.js'
+import DOM from './objectsDOM.js';
 
 /* eslint-enable import/extensions */
 
@@ -13,7 +13,7 @@ const response = (index, player, board, slot, status) => {
     slot.innerHTML = player.val;
     status = !status;
     slot.style.cursor = 'default';
-  } 
+  }
 
   return {
     status,
@@ -22,10 +22,8 @@ const response = (index, player, board, slot, status) => {
 };
 
 
-
 const init = (name1, name2) => {
-
-DOM().modifyElementsDOM(name1)
+  DOM().modifyElementsDOM(name1);
   const board = gameBoard();
   const player1 = player(name1, 'X');
   const player2 = player(name2, 'O');
@@ -36,7 +34,7 @@ DOM().modifyElementsDOM(name1)
         const {
           status,
           player,
-        } = response(i, player1, board, slot , player1turn);
+        } = response(i, player1, board, slot, player1turn);
         player1turn = status;
         if (!player1turn) {
           DOM().header.innerHTML = `${player2.name} Turn`;
@@ -50,7 +48,7 @@ DOM().modifyElementsDOM(name1)
         } = response(i, player2, board, slot, player1turn);
         player1turn = status;
         if (player1turn) {
-         DOM().header.innerHTML = `${player1.name} Turn`;
+          DOM().header.innerHTML = `${player1.name} Turn`;
         }
 
         board.checkWin(player);
@@ -62,7 +60,6 @@ DOM().modifyElementsDOM(name1)
 
 const startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', (e) => {
-  // Prevent default refreshing
   e.preventDefault();
   const inputs = document.getElementsByTagName('input');
 
