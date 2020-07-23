@@ -3,13 +3,14 @@
 
 import player from './player.js';
 import gameBoard from './gameBoard.js';
+import DOM from './objectsDOM.js'
 
 /* eslint-enable import/extensions */
 
-const response = (index, player, board, slots, status) => {
+const response = (index, player, board, slot, status) => {
   const response = board.modifyArray(index, player.val);
   if (response) {
-    slots[index].innerHTML = player.val;
+    slot.innerHTML = player.val;
     status = !status;
   } else {
     /* eslint-disable no-alert */
@@ -23,45 +24,39 @@ const response = (index, player, board, slots, status) => {
   };
 };
 
+
+
 const init = (name1, name2) => {
-  const containers = document.getElementsByClassName('container');
-  const screen = document.getElementsByClassName('container-fluid')[0];
-  containers[1].classList.add('d-none');
-  screen.classList.add('d-none');
-  containers[1].classList.remove('d-flex');
-  containers[0].classList.remove('d-none');
-  const header = document.getElementsByTagName('h5')[0];
-  header.innerHTML = `${name1} Turn`;
-  header.classList.remove('d-none');
+
+DOM().modifyElementsDOM(name1)
   const board = gameBoard();
   const player1 = player(name1, 'X');
   const player2 = player(name2, 'O');
-  // let result = true
   let player1turn = true;
-  Array.from(board.slots).forEach((slot, i) => {
+  Array.from(DOM().slots).forEach((slot, i) => {
     slot.addEventListener('click', () => {
       if (player1turn) {
         const {
           status,
           player,
-        } = response(i, player1, board, board.slots, player1turn);
+        } = response(i, player1, board, slot , player1turn);
         player1turn = status;
         if (!player1turn) {
-          header.innerHTML = `${player2.name} Turn`;
+          DOM().header.innerHTML = `${player2.name} Turn`;
         }
 
-        player.checkWin(board, header);
+        board.checkWin(player);
       } else {
         const {
           status,
           player,
-        } = response(i, player2, board, board.slots, player1turn);
+        } = response(i, player2, board, slot, player1turn);
         player1turn = status;
         if (player1turn) {
-          header.innerHTML = `${player1.name} Turn`;
+         DOM().header.innerHTML = `${player1.name} Turn`;
         }
 
-        player.checkWin(board, header);
+        board.checkWin(player);
       }
     });
   });
