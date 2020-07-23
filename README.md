@@ -1,5 +1,5 @@
 # JS-TicTactoe
-TicTacToe game running in the frontend.This project uses factory functions and the module pattern so the main goal is to put into practice those concepts along with the main concepts of Object Oriented Programming
+TicTacToe game running in the frontend .This project uses factory functions and the module pattern so the main goal is to put into practice those concepts along with the main concepts of Object Oriented Programming
 ## Screenshot
 
 ![tictactoe](https://user-images.githubusercontent.com/53324035/88214047-2846c300-cc1f-11ea-9805-08e15f34a513.png)
