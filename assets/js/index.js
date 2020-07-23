@@ -12,11 +12,8 @@ const response = (index, player, board, slot, status) => {
   if (response) {
     slot.innerHTML = player.val;
     status = !status;
-  } else {
-    /* eslint-disable no-alert */
-    alert('Please choose another position');
-    /* eslint-enable no-alert */
-  }
+    slot.style.cursor = 'default';
+  } 
 
   return {
     status,
