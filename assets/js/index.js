@@ -19,6 +19,16 @@ const response = (index, player, board, slot, status) => {
   };
 };
 
+const checkPlay = (board, player) =>{
+  if (board.checkWin(player)){
+    let message = player.renderWinner();
+    player.renderPop(message);
+  } else if (board.checkDraw(player)){
+    let message = 'Game drawed!';
+    player.renderPop(message);
+  }
+}
+
 const init = (name1, name2) => {
   DOM().modifyElementsDOM(name1);
   const board = gameBoard();
@@ -39,8 +49,8 @@ const init = (name1, name2) => {
         if (!player1turn) {
           DOM().header.innerHTML = `${player2.name} Turn`;
         }
-
-        board.checkWin(player);
+        checkPlay(board,player);
+        
       } else {
         const { status, player } = response(
           i,
@@ -53,8 +63,8 @@ const init = (name1, name2) => {
         if (player1turn) {
           DOM().header.innerHTML = `${player1.name} Turn`;
         }
+        checkPlay(board,player);
 
-        board.checkWin(player);
       }
     });
   });

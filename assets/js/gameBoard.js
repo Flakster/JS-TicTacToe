@@ -9,65 +9,51 @@ const gameBoard = () => {
         return false;
     };
 
-    const checkDraw = (player) => {
-        const positions = board.filter(x => x !== '');
+    const checkDraw = (player,arr = false) => {
+        let board2 = arr || board;
+        const positions = board2.filter(x => x !== '');
         if (positions.length === 9) {
-            const message = 'Game drawed!';
-            player.renderPop(message);
-            return true
-        }
+            return true;
+        } 
         return false
     };
 
-    const checkWin = (player) => {
-        if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+    const checkWin = (player,arr = false) => {
+        let board2 = arr || board;
+        if (board2[0] !== '' && board2[0] === board2[1] && board2[1] === board2[2]) {
             return true;
         }
-        if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[3] !== '' && board2[3] === board2[4] && board2[4] === board2[5]) {
             return true;
         }
-        if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[6] !== '' && board2[6] === board2[7] && board2[7] === board2[8]) {
             return true;
         }
-        if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[0] !== '' && board2[0] === board2[3] && board2[3] === board2[6]) {
             return true;
         }
-        if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[1] !== '' && board2[1] === board2[4] && board2[4] === board2[7]) {
             return true;
         }
-        if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[2] !== '' && board2[2] === board2[5] && board2[5] === board2[8]) {
             return true;
         }
-        if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[0] !== '' && board2[0] === board2[4] && board2[4] === board2[8]) {
             return true;
         }
-        if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
-            const message = player.renderWinner();
-            player.renderPop(message);
+        if (board2[2] !== '' && board2[2] === board2[4] && board2[4] === board2[6]) {
             return true;
         }
 
-        return checkDraw(player);
-
+        //return checkDraw(player);
+        return false
     };
 
 
     return {
+        board,
         checkWin,
+        checkDraw,
         modifyArray,
     };
 };
