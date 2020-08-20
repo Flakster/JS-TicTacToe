@@ -4,9 +4,9 @@
     "description": "A tictactoe based game on JS",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "watch": "webpack --watch"
-
+        "test": "jest",
+        "watch": "webpack --watch",
+        "watchtest": "jest --watch "
     },
     "repository": {
         "type": "git",
@@ -27,6 +27,7 @@
         "eslint": "^6.8.0",
         "eslint-config-airbnb-base": "^14.1.0",
         "eslint-plugin-import": "^2.20.2",
+        "jest": "^26.4.1",
         "node-sass": "^4.14.1",
         "postcss-loader": "^3.0.0",
         "precss": "^4.0.0",
