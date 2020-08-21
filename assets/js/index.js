@@ -1,10 +1,8 @@
-
 /* eslint-disable import/extensions */
-
 import player from './player.js';
 import gameBoard from './gameBoard.js';
 import DOM from './objectsDOM.js';
-
+import '../stylesheets/style.css';
 /* eslint-enable import/extensions */
 
 const response = (index, player, board, slot, status) => {
@@ -21,6 +19,15 @@ const response = (index, player, board, slot, status) => {
   };
 };
 
+const checkPlay = (board, player) => {
+  if (board.checkWin(player)) {
+    const message = player.renderWinner();
+    player.renderPop(message);
+  } else if (board.checkDraw(player)) {
+    const message = 'Game drawed!';
+    player.renderPop(message);
+  }
+};
 
 const init = (name1, name2) => {
   DOM().modifyElementsDOM(name1);
@@ -31,35 +38,38 @@ const init = (name1, name2) => {
   Array.from(DOM().slots).forEach((slot, i) => {
     slot.addEventListener('click', () => {
       if (player1turn) {
-        const {
-          status,
-          player,
-        } = response(i, player1, board, slot, player1turn);
+        const { status, player } = response(
+          i,
+          player1,
+          board,
+          slot,
+          player1turn,
+        );
         player1turn = status;
         if (!player1turn) {
           DOM().header.innerHTML = `${player2.name} Turn`;
         }
-
-        board.checkWin(player);
+        checkPlay(board, player);
       } else {
-        const {
-          status,
-          player,
-        } = response(i, player2, board, slot, player1turn);
+        const { status, player } = response(
+          i,
+          player2,
+          board,
+          slot,
+          player1turn,
+        );
         player1turn = status;
         if (player1turn) {
           DOM().header.innerHTML = `${player1.name} Turn`;
         }
-
-        board.checkWin(player);
+        checkPlay(board, player);
       }
     });
   });
 };
 
-
 const startBtn = document.getElementById('startBtn');
-startBtn.addEventListener('click', (e) => {
+startBtn.addEventListener('click', e => {
   e.preventDefault();
   const inputs = document.getElementsByTagName('input');
 

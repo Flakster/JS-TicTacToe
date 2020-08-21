@@ -3,14 +3,22 @@ import DOM from './objectsDOM.js';
 /* eslint-enable import/extensions */
 const player = (name, val) => {
   const renderPop = (message) => {
-    const { header } = DOM();
-    const { mainTitle } = DOM();
+    const {
+      header,
+      pop,
+      mainTitle,
+
+    } = DOM();
+    const {
+      children,
+    } = pop;
+
     mainTitle.style.color = '#ffff';
     header.classList.add('d-none');
-    const { pop } = DOM();
+
     pop.classList.remove('d-none');
     document.body.style.background = '#f6f6f6';
-    const { children } = pop;
+
 
     const popUp = children[0].children[0];
 
@@ -22,7 +30,7 @@ const player = (name, val) => {
 
   const renderWinner = () => {
     const message = `${name} WINS!`;
-    renderPop(message);
+    return message;
   };
 
 
